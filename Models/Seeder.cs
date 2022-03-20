@@ -21,8 +21,8 @@ namespace Lab_06.Models
             }
             List<Genre> genres = new List<Genre>() { new Genre { Name = "Some genre", Description = "Some genre description" }, { new Genre { Name = "Some genre", Description = "222" } } };
             List<Genre> genres2 = new List<Genre>() { new Genre { Name = "Third", Description = "Descc" } };
-            Video video = new Video { Name = "Video 1", Description = "Some video desc", User = admin, Genres = genres };
-            Video video2 = new Video { Name = "Video 2", Description = "Some second video", User = admin, Genres = genres2 };
+            Video video = new Video { Name = "Video 1", Description = "Some video desc", ImagePath = "...", Path = "https://www.youtube.com/watch?v=P5utCp_EhXA&feature=emb_logo&ab_channel=Tasty", EmbedHtml = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/P5utCp_EhXA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>", User = admin, Genres = genres };
+            Video video2 = new Video { Name = "Video 2", Description = "Some second video", ImagePath = "...", Path = "https://www.youtube.com/watch?v=mFvIBlgjFzA&list=UUCLFxVP-PFDk7yZj208aAgg&ab_channel=MashupZone", EmbedHtml = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/mFvIBlgjFzA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>", User = admin, Genres = genres2 };
             if (!context.Videos.Any())
             {
                 context.Videos.AddRange(video, video2);

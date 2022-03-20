@@ -57,7 +57,11 @@ namespace Lab_06
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "pagination", template: "Home/Page{page}", defaults: new { Controller = "Home", action = "Index" });
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+            });
             Seeder.EnsurePopulated(app);
         }
     }

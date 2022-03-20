@@ -49,3 +49,12 @@ C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Videos\
 C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Details.cshtml.g.cs
 C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Edit.cshtml.g.cs
 C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Index.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\bin\Debug\netcoreapp2.1\libman.json
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Comments1\Create.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Comments1\Delete.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Comments1\Details.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Comments1\Edit.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Comments1\Index.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Play.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Home\Card.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Videos\CommentCard.cshtml.g.cs

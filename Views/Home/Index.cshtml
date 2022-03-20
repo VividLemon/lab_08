@@ -1,8 +1,12 @@
-﻿@page
-@model IndexModel
+﻿@model Lab_06.Models.ViewModels.VideosIndexViewModels
 @{
 }
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <h1>HElllooo</h1>
+<div class="row">
+    @foreach(var item in Model.Videos)
+    {   
+    <div class="col">
+       @await Html.PartialAsync("Home/Card", item)
+    </div>
+    }
 </div>
+<div page-model="@Model.PagingInfo" page-action="Index"></div>

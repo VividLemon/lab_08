@@ -21,7 +21,7 @@ namespace Lab_06.Migrations
 
             modelBuilder.Entity("Lab_06.Models.Comment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CommentId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -35,7 +35,7 @@ namespace Lab_06.Migrations
 
                     b.Property<int?>("VideoId");
 
-                    b.HasKey("Id");
+                    b.HasKey("CommentId");
 
                     b.HasIndex("UserId");
 
@@ -46,7 +46,7 @@ namespace Lab_06.Migrations
 
             modelBuilder.Entity("Lab_06.Models.Genre", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GenreId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -60,7 +60,7 @@ namespace Lab_06.Migrations
 
                     b.Property<int?>("VideoId");
 
-                    b.HasKey("Id");
+                    b.HasKey("GenreId");
 
                     b.HasIndex("VideoId");
 
@@ -69,7 +69,7 @@ namespace Lab_06.Migrations
 
             modelBuilder.Entity("Lab_06.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -81,14 +81,14 @@ namespace Lab_06.Migrations
 
                     b.Property<DateTime>("UpdatedAt");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Lab_06.Models.Video", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("VideoId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -96,13 +96,19 @@ namespace Lab_06.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("EmbedHtml");
+
+                    b.Property<string>("ImagePath");
+
                     b.Property<string>("Name");
+
+                    b.Property<string>("Path");
 
                     b.Property<DateTime>("UpdatedAt");
 
                     b.Property<int?>("UserId");
 
-                    b.HasKey("Id");
+                    b.HasKey("VideoId");
 
                     b.HasIndex("UserId");
 
@@ -116,13 +122,13 @@ namespace Lab_06.Migrations
                         .HasForeignKey("UserId");
 
                     b.HasOne("Lab_06.Models.Video", "Video")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("VideoId");
                 });
 
             modelBuilder.Entity("Lab_06.Models.Genre", b =>
                 {
-                    b.HasOne("Lab_06.Models.Video")
+                    b.HasOne("Lab_06.Models.Video", "Video")
                         .WithMany("Genres")
                         .HasForeignKey("VideoId");
                 });
@@ -130,7 +136,7 @@ namespace Lab_06.Migrations
             modelBuilder.Entity("Lab_06.Models.Video", b =>
                 {
                     b.HasOne("Lab_06.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Videos")
                         .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
