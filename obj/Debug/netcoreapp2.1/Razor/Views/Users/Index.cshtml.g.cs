@@ -23,8 +23,13 @@ using Lab_06.Models.ViewModels;
 
 #line default
 #line hidden
+#line 3 "C:\Users\Issayah\source\repos\Lab_06\Views\_ViewImports.cshtml"
+using Lab_06.Infrastructure;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"71d4fccc6cf67f3f722e5e1c3861f439b9fb4236", @"/Views/Users/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"be54a8cf7bc0908edf71ad219ea0c0826817c83a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d34a844f9111a989f7cb56cfcd06ae29ffa6533b", @"/Views/_ViewImports.cshtml")]
     public class Views_Users_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Lab_06.Models.User>>
     {
         #pragma warning disable 1998

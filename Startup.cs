@@ -26,12 +26,12 @@ namespace Lab_06
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            //services.Configure<CookiePolicyOptions>(options =>
+            //{
+            //    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+            //    options.CheckConsentNeeded = context => true;
+            //    options.MinimumSameSitePolicy = SameSiteMode.None;
+            //});
 
             services.AddDbContext<ApplicationDbContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -39,6 +39,11 @@ namespace Lab_06
             services.AddTransient<IGenreRepository, EFGenreRepository>();
             services.AddTransient<IUserRepository, EFUserRepository>();
             services.AddTransient<IVideoRepository, EFVideoRepository>();
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IOrderRepository, EFOrderRepository>();
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -54,12 +59,16 @@ namespace Lab_06
                 app.UseExceptionHandler("/Error");
             }
 
+            app.UseSession();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(name: "pagination", template: "Home/Page{page}", defaults: new { Controller = "Home", action = "Index" });
+                routes.MapRoute(name: null, template: "Home/{search}/Page{page}", defaults: new {controller = "Home", action = "Index"});
+                routes.MapRoute(name: "pagination", template: "Home/Page{page}", defaults: new { Controller = "Home", action = "Index", page=1 });
+                routes.MapRoute(name: null, template: "Home/{search}", defaults: new { controller = "Home", action = "Index", page=1 });
+                routes.MapRoute(name: null, template: "", defaults: new { controller = "Home", action = "Index", page=1 });
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });
             Seeder.EnsurePopulated(app);

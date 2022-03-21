@@ -10,7 +10,14 @@
         <h5 class="card-title">@Model.Name</h5>
         <p class="card-text">@Model.Description</p>
         <p>Posted By: @Model.User.Name</p>
-        <a asp-controller="Videos" asp-action="Play" asp-route-id="@Model.VideoId" class="btn btn-primary" style="width:100%;">Visit</a>
+        <form id="@Model.VideoId" asp-action="AddCartItem" asp-controller="Cart" method="post">
+            <input type="hidden" asp-for="VideoId" />
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+            <button type="submit" class="btn btn-primary mb-1" style="width: 100%;">
+                Buy me @Model.Price.ToString("c")
+            </button>
+        </form>
+        <a asp-controller="Videos" asp-action="Play" asp-route-id="@Model.VideoId" class="btn btn-secondary" style="width:100%;">Visit</a>
             @if(@Model.CreatedAt.Date == DateTime.Now.Date)
             {
                 <p class="card-footer">Posted At: @Model.CreatedAt.ToShortTimeString() today</p>

@@ -37,7 +37,8 @@ namespace Lab_06.Migrations
                     ImagePath = table.Column<string>(nullable: true),
                     Path = table.Column<string>(nullable: true),
                     EmbedHtml = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: true)
+                    UserId = table.Column<int>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

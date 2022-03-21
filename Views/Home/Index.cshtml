@@ -2,7 +2,7 @@
 @{
 }
 <div class="row">
-    @foreach(var item in Model.Videos)
+    @foreach(Video item in Model.Videos)
     {   
     <div class="col">
        @await Html.PartialAsync("Home/Card", item)

@@ -12,5 +12,6 @@ namespace Lab_06.Models
         public User User { get; set; }
         public List<Genre> Genres { get; set; }
         public List<Comment> Comments { get; set; }
+        public decimal Price { get; set; }
     }
 }

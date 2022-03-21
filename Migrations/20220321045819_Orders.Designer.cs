@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab_06.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220319152000_init")]
-    partial class init
+    [Migration("20220321045819_Orders")]
+    partial class Orders
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,27 @@ namespace Lab_06.Migrations
                 .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Lab_06.Models.CartLine", b =>
+                {
+                    b.Property<int>("CartLineId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("OrderId");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<int?>("VideoId");
+
+                    b.HasKey("CartLineId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("VideoId");
+
+                    b.ToTable("CartLine");
+                });
 
             modelBuilder.Entity("Lab_06.Models.Comment", b =>
                 {
@@ -69,6 +90,39 @@ namespace Lab_06.Migrations
                     b.ToTable("Genres");
                 });
 
+            modelBuilder.Entity("Lab_06.Models.Order", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City")
+                        .IsRequired();
+
+                    b.Property<string>("Country")
+                        .IsRequired();
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<string>("Line1")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("State")
+                        .IsRequired();
+
+                    b.Property<string>("Zip")
+                        .IsRequired()
+                        .HasMaxLength(2);
+
+                    b.HasKey("OrderId");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("Lab_06.Models.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -106,6 +160,8 @@ namespace Lab_06.Migrations
 
                     b.Property<string>("Path");
 
+                    b.Property<decimal>("Price");
+
                     b.Property<DateTime>("UpdatedAt");
 
                     b.Property<int?>("UserId");
@@ -115,6 +171,17 @@ namespace Lab_06.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Videos");
+                });
+
+            modelBuilder.Entity("Lab_06.Models.CartLine", b =>
+                {
+                    b.HasOne("Lab_06.Models.Order")
+                        .WithMany("CartLines")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("Lab_06.Models.Video", "Video")
+                        .WithMany()
+                        .HasForeignKey("VideoId");
                 });
 
             modelBuilder.Entity("Lab_06.Models.Comment", b =>

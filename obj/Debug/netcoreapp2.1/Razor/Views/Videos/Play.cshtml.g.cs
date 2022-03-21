@@ -23,8 +23,13 @@ using Lab_06.Models.ViewModels;
 
 #line default
 #line hidden
+#line 3 "C:\Users\Issayah\source\repos\Lab_06\Views\_ViewImports.cshtml"
+using Lab_06.Infrastructure;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4dce9f7ccf36b0f5abbd7bd724b8c7f7b35c99df", @"/Views/Videos/Play.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"be54a8cf7bc0908edf71ad219ea0c0826817c83a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d34a844f9111a989f7cb56cfcd06ae29ffa6533b", @"/Views/_ViewImports.cshtml")]
     public class Views_Videos_Play : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Lab_06.Models.Video>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("aria-label", new global::Microsoft.AspNetCore.Html.HtmlString("Go back"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -67,7 +72,7 @@ using Lab_06.Models.ViewModels;
             WriteLiteral("\r\n<div class=\"row\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col\">\r\n                ");
             EndContext();
             BeginContext(198, 665, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dce9f7ccf36b0f5abbd7bd724b8c7f7b35c99df4564", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dce9f7ccf36b0f5abbd7bd724b8c7f7b35c99df4699", async() => {
                 BeginContext(263, 596, true);
                 WriteLiteral(@"
                     <svg aria-hidden=""true"" xmlns=""http://www.w3.org/2000/svg"" width=""40"" height=""40"" fill=""currentColor"" class=""bi bi-house"" viewBox=""0 0 16 16"">
