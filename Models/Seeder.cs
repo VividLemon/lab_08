@@ -25,8 +25,18 @@ namespace Lab_06.Models
             Video video4 = new Video { Name = "Video 4", Price = 100, Description = "Some second video", ImagePath = "https://www.pngall.com/wp-content/uploads/2016/05/Orange-Free-PNG-Image.png", Path = "https://www.youtube.com/watch?v=mFvIBlgjFzA&list=UUCLFxVP-PFDk7yZj208aAgg&ab_channel=MashupZone", EmbedHtml = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/mFvIBlgjFzA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>", User = admin };
             Video video5 = new Video { Name = "Video 5", Price = 100, Description = "Some video desc", ImagePath = "https://www.pngall.com/wp-content/uploads/2016/05/Orange-Free-PNG-Image.png", Path = "https://www.youtube.com/watch?v=P5utCp_EhXA&feature=emb_logo&ab_channel=Tasty", EmbedHtml = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/P5utCp_EhXA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>", User = admin };
             Video video6 = new Video { Name = "Video 6", Price = 100, Description = "Some second video", ImagePath = "https://www.pngall.com/wp-content/uploads/2016/05/Orange-Free-PNG-Image.png", Path = "https://www.youtube.com/watch?v=mFvIBlgjFzA&list=UUCLFxVP-PFDk7yZj208aAgg&ab_channel=MashupZone", EmbedHtml = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/mFvIBlgjFzA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>", User = admin };
+            if (!context.Videos.Any())
+            {
+                context.Videos.AddRange(video, video2, video3, video4, video5, video6);
+                context.SaveChanges();
+            }
             Genre genre = new Genre { Name = "first genre", Description = "First genre description" };
             Genre secondGenre = new Genre { Name = "Second genre", Description = "Second genre description" };
+            if (!context.Genres.Any())
+            {
+                context.Genres.AddRange(genre, secondGenre);
+                context.SaveChanges();
+            }
             List<VideoGenre> videoGenres = new List<VideoGenre>()
             {
                 new VideoGenre { Video = video, Genre = genre },
