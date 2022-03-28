@@ -13,7 +13,7 @@ namespace Lab_06.Controllers
 {
     public class HomeController : Controller
     {
-        private int PageSize = 1;
+        private int PageSize = 8;
         private readonly IVideoRepository _context;
 
         public HomeController(IVideoRepository context)

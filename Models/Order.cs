@@ -16,9 +16,9 @@ namespace Lab_06.Models
         [Required(ErrorMessage = "Please enter your city")]
         public string City { get; set; }
         [Required(ErrorMessage = "Please enter your state")]
+        [MaxLength(2, ErrorMessage = "Must be length of 2")]
         public string State { get; set; }
         [Required(ErrorMessage = "Please enter your zip")]
-        [MaxLength(2, ErrorMessage = "Must be length of 2")]
         public string Zip { get; set; }
         [Required(ErrorMessage = "Please enter your country")]
         public string Country { get; set; }

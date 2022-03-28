@@ -79,11 +79,7 @@ namespace Lab_06.Migrations
 
                     b.Property<DateTime>("UpdatedAt");
 
-                    b.Property<int?>("VideoId");
-
                     b.HasKey("GenreId");
-
-                    b.HasIndex("VideoId");
 
                     b.ToTable("Genres");
                 });
@@ -110,11 +106,11 @@ namespace Lab_06.Migrations
                         .IsRequired();
 
                     b.Property<string>("State")
-                        .IsRequired();
-
-                    b.Property<string>("Zip")
                         .IsRequired()
                         .HasMaxLength(2);
+
+                    b.Property<string>("Zip")
+                        .IsRequired();
 
                     b.HasKey("OrderId");
 
@@ -171,6 +167,25 @@ namespace Lab_06.Migrations
                     b.ToTable("Videos");
                 });
 
+            modelBuilder.Entity("Lab_06.Models.VideoGenre", b =>
+                {
+                    b.Property<int>("VideoGenreId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("GenreId");
+
+                    b.Property<int?>("VideoId");
+
+                    b.HasKey("VideoGenreId");
+
+                    b.HasIndex("GenreId");
+
+                    b.HasIndex("VideoId");
+
+                    b.ToTable("VideoGenres");
+                });
+
             modelBuilder.Entity("Lab_06.Models.CartLine", b =>
                 {
                     b.HasOne("Lab_06.Models.Order")
@@ -193,18 +208,22 @@ namespace Lab_06.Migrations
                         .HasForeignKey("VideoId");
                 });
 
-            modelBuilder.Entity("Lab_06.Models.Genre", b =>
-                {
-                    b.HasOne("Lab_06.Models.Video", "Video")
-                        .WithMany("Genres")
-                        .HasForeignKey("VideoId");
-                });
-
             modelBuilder.Entity("Lab_06.Models.Video", b =>
                 {
                     b.HasOne("Lab_06.Models.User", "User")
                         .WithMany("Videos")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Lab_06.Models.VideoGenre", b =>
+                {
+                    b.HasOne("Lab_06.Models.Genre", "Genre")
+                        .WithMany("VideoGenres")
+                        .HasForeignKey("GenreId");
+
+                    b.HasOne("Lab_06.Models.Video", "Video")
+                        .WithMany("VideoGenres")
+                        .HasForeignKey("VideoId");
                 });
 #pragma warning restore 612, 618
         }

@@ -12,11 +12,15 @@ namespace Lab_06.Models
         }
         public IQueryable<Video> Videos => Context.Videos;
         public IQueryable<Video> VideosWithUser => this.Videos
-                .Include(el => el.User);
+                .Include(el => el.User)
+                .Include(el => el.VideoGenres)
+                    .ThenInclude(el => el.Genre);
 
         public IQueryable<Video> VideosGetAll => this.Videos
             .Include(el => el.User)
-            .Include(el => el.Comments).ThenInclude(el => el.User);
+            .Include(el => el.Comments).ThenInclude(el => el.User)
+            .Include(el => el.VideoGenres)
+                .ThenInclude(el => el.Genre);
         // TODO Seed data. Controller View results for 11 & 12. Certain fields in models are nullable
     }
 }

@@ -10,7 +10,7 @@ namespace Lab_06.Models
         public string Path { get; set; }
         public string EmbedHtml { get; set; }
         public User User { get; set; }
-        public List<Genre> Genres { get; set; }
+        public List<VideoGenre> VideoGenres { get; set; }
         public List<Comment> Comments { get; set; }
         public decimal Price { get; set; }
     }

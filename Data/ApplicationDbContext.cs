@@ -10,5 +10,6 @@ namespace Lab_06.Data
         public DbSet<Video> Videos { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<VideoGenre> VideoGenres { get; set; }
     }
 }
