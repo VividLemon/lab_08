@@ -25,5 +25,6 @@ namespace Lab_06.Models
         [Required(ErrorMessage = "Please enter your email")]
         [EmailAddress(ErrorMessage = "Must be a valid email")]
         public string Email { get; set; }
+        public bool IsShipped { get; set; } = false;
     }
 }

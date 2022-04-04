@@ -36,7 +36,8 @@ namespace Lab_06.Migrations
                     State = table.Column<string>(maxLength: 2, nullable: false),
                     Zip = table.Column<string>(nullable: false),
                     Country = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: false)
+                    Email = table.Column<string>(nullable: false),
+                    IsShipped = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

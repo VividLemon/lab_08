@@ -32,6 +32,13 @@
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
+                <a asp-action="Edit" class="btn btn-primary">Update</a>
+                <form method="post" asp-action="Destroy" asp-controller="Videos">
+                    <input type="hidden" name="videoId" value="@item.VideoId" />
+                    <button type="submit" class="btn btn-danger">
+                        Delete item
+                    </button>
+                </form>
                 <a asp-action="Details" asp-route-id="@item.VideoId">Details</a>
             </td>
         </tr>
@@ -39,3 +46,4 @@
     </tbody>
 </table>
 <div page-model="@Model.PagingInfo" page-action="Index"></div>
+<a asp-action="Create" class="btn btn-primary">Create new</a>

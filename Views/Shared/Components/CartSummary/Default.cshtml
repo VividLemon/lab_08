@@ -4,9 +4,9 @@
 *@
 @{
 }
-<div>
+<span>
     <span>Cart: @Model.Lines.Sum(el => el.Quantity).ToString()</span>
     <a asp-action="Index" asp-controller="Cart" aria-label="Cart">
         <i aria-hidden="true" class="fa-solid fa-cart-shopping"></i>
     </a>
-</div>
+</span>

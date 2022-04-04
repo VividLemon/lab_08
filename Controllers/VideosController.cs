@@ -36,6 +36,16 @@ namespace Lab_06.Controllers
             }); 
         }
 
+        public IActionResult Create(Video video)
+        {
+                return View();
+        }
+        public async Task<IActionResult> Edit(int videoId)
+        {
+            var video = await _context.Videos.FirstOrDefaultAsync(el => el.VideoId == videoId);
+            return View(video);
+        }
+
         // GET: Videos/Play/{id}
         public async Task<IActionResult> Play(int? id)
         {
@@ -63,6 +73,42 @@ namespace Lab_06.Controllers
             }
 
             return View(video);
+        }
+        [HttpPost]
+        public async Task<RedirectToActionResult> Destroy (int videoId)
+        {
+            await _context.DeleteVideo(videoId);
+            return RedirectToAction("Index", "Admin");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update (Video video)
+        {
+            if (ModelState.IsValid)
+            {
+            await _context.SaveVideo(video);
+            return RedirectToAction("Index", "Admin");
+
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Store (Video video)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.CreateVideo(video);
+                return RedirectToAction("Index", "Admin");
+
+            }
+            else
+            {
+                return View("Create");
+            }
         }
     }
 }

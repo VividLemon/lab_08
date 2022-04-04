@@ -99,6 +99,8 @@ namespace Lab_06.Migrations
                     b.Property<string>("Email")
                         .IsRequired();
 
+                    b.Property<bool>("IsShipped");
+
                     b.Property<string>("Line1")
                         .IsRequired();
 
@@ -149,6 +151,8 @@ namespace Lab_06.Migrations
                     b.Property<string>("EmbedHtml");
 
                     b.Property<string>("ImagePath");
+
+                    b.Property<bool>("IsDeleted");
 
                     b.Property<string>("Name");
 

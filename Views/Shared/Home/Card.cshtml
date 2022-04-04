@@ -9,7 +9,7 @@
         <img src="@Model.ImagePath" class="card-img-top" alt="@Model.Name">
         <h5 class="card-title">@Model.Name</h5>
         <p class="card-text">@Model.Description</p>
-        <p>Posted By: @Model.User.Name</p>
+        <p>Posted By: @Model.User?.Name</p>
         <form id="@Model.VideoId" asp-action="AddCartItem" asp-controller="Cart" method="post">
             <input type="hidden" asp-for="VideoId" />
             <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />

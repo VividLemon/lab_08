@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab_06.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220328044013_init")]
+    [Migration("20220404070139_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,6 +100,8 @@ namespace Lab_06.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired();
+
+                    b.Property<bool>("IsShipped");
 
                     b.Property<string>("Line1")
                         .IsRequired();

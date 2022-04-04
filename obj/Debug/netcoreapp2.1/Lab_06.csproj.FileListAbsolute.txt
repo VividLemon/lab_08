@@ -58,3 +58,6 @@ C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Cart\In
 C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Order\Checkout.cshtml.g.cs
 C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Order\Completed.cshtml.g.cs
 C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\CartSummary\Default.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\Issayah\source\repos\Lab_06\obj\Debug\netcoreapp2.1\Razor\Views\Order\OutstandingOrders.cshtml.g.cs

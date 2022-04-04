@@ -17,9 +17,9 @@ namespace Lab_06.Models
         public async Task SaveOrder(Order order)
         {
             _context.AttachRange(order.CartLines.Select(el => el.Video));
-            if(order.OrderId == 0)
+            if (order.OrderId == 0)
             {
-                _context.Orders.Add(order);
+                await _context.Orders.AddAsync(order);
             }
             await _context.SaveChangesAsync();
         }

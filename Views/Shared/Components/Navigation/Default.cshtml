@@ -14,6 +14,14 @@
                 Search
             </button>
         </form>
-        @await Component.InvokeAsync("CartSummary")
+        <div>
+            @await Component.InvokeAsync("CartSummary")
+            @if (true)
+            {
+                <a class="ms-2" asp-action="index" asp-controller="Admin" aria-label="Admin settings">
+                    <i class="fa-solid fa-gears"></i>
+                </a>
+            }
+        </div>
     </div>
 </nav>
