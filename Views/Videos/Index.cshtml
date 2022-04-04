@@ -32,7 +32,12 @@
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
-                <a asp-action="Edit" class="btn btn-primary">Update</a>
+                <form method="get" asp-action="Edit">
+                    <input type="hidden" name="videoId" value="@item.VideoId" />
+                    <button type="submit" class="btn btn-primary">
+                        Update
+                    </button>
+                </form>
                 <form method="post" asp-action="Destroy" asp-controller="Videos">
                     <input type="hidden" name="videoId" value="@item.VideoId" />
                     <button type="submit" class="btn btn-danger">

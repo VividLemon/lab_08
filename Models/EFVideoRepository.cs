@@ -49,33 +49,27 @@ namespace Lab_06.Models
                 }
                 if(video.Price != null)
                 {
-
-                old.Price = video.Price;
+                    old.Price = video.Price;
                 }
                 if(video.Comments != null)
                 {
-
-                old.Comments = video.Comments ;
+                    old.Comments = video.Comments ;
                 }
                 if(video.User != null)
                 {
-
-                old.User = video.User ;
+                    old.User = video.User ;
                 }
                 if(video.EmbedHtml != null)
                 {
-
-                old.EmbedHtml = video.EmbedHtml;
+                    old.EmbedHtml = video.EmbedHtml;
                 }
                 if(video.Path != null)
                 {
-
-                old.Path = video.Path;
+                    old.Path = video.Path;
                 }
                 if(video.VideoGenres != null)
                 {
-
-                old.VideoGenres = video.VideoGenres;
+                    old.VideoGenres = video.VideoGenres;
                 }
                 old.UpdatedAt = System.DateTime.Now;
                 Context.Videos.Update(old);

@@ -36,13 +36,13 @@ namespace Lab_06.Controllers
             }); 
         }
 
-        public IActionResult Create(Video video)
+        public IActionResult Create()
         {
-                return View();
+                return View(new Video());
         }
         public async Task<IActionResult> Edit(int videoId)
         {
-            var video = await _context.Videos.FirstOrDefaultAsync(el => el.VideoId == videoId);
+            var video = await _context.Videos.Include(el => el.User).Include(el => el.Comments).Include(el => el.VideoGenres).FirstOrDefaultAsync(el => el.VideoId == videoId);
             return View(video);
         }
 
@@ -84,16 +84,8 @@ namespace Lab_06.Controllers
         [HttpPost]
         public async Task<IActionResult> Update (Video video)
         {
-            if (ModelState.IsValid)
-            {
-            await _context.SaveVideo(video);
-            return RedirectToAction("Index", "Admin");
-
-            }
-            else
-            {
-                return View();
-            }
+                await _context.SaveVideo(video);
+                return RedirectToAction("Index", "Admin");
         }
 
         [HttpPost]
