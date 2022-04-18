@@ -16,15 +16,11 @@ namespace Lab_06.Models
         [Required(ErrorMessage = "Please enter your city")]
         public string City { get; set; }
         [Required(ErrorMessage = "Please enter your state")]
-        [MaxLength(2, ErrorMessage = "Must be length of 2")]
         public string State { get; set; }
         [Required(ErrorMessage = "Please enter your zip")]
         public string Zip { get; set; }
         [Required(ErrorMessage = "Please enter your country")]
         public string Country { get; set; }
-        [Required(ErrorMessage = "Please enter your email")]
-        [EmailAddress(ErrorMessage = "Must be a valid email")]
-        public string Email { get; set; }
-        public bool IsShipped { get; set; } = false;
+        public User User { get; set; }
     }
 }

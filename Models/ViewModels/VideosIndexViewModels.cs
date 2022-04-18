@@ -7,5 +7,6 @@ namespace Lab_06.Models.ViewModels
         public IEnumerable<Video> Videos { get; set; }
         public PagingInfo PagingInfo { get; set; }
         public string SearchQuery { get; set; }
+        public List<Video> OwnedVideos { get; set; }
     }
 }

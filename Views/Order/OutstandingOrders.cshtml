@@ -10,7 +10,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@item.index" aria-expanded="true" aria-controls="collapseOne">
-        @item.el.Name, @item.el.Email, @item.el.City
+        @item.el.Name, @item.el.City
       </button>
     </h2>
     <div id="collapse-@item.index" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#myAccordion">
@@ -18,7 +18,7 @@
         @foreach(var it in item.el.CartLines)
         {
             <p>
-                @it.Video.Name, Quantity: @it.Quantity
+                @it.Video.Name, Quantity: 
             </p>
         }
         <form asp-action="OutstandingOrders" method="post">

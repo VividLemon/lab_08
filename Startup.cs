@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Lab_06.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Lab_06
 {
@@ -39,12 +40,18 @@ namespace Lab_06
             services.AddTransient<IGenreRepository, EFGenreRepository>();
             services.AddTransient<IUserRepository, EFUserRepository>();
             services.AddTransient<IVideoRepository, EFVideoRepository>();
+            services.AddTransient<ILikedVideoRepository, EFLikedVideoRepository>();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IOrderRepository, EFOrderRepository>();
             services.AddMemoryCache();
             services.AddSession();
+            services.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders()
+                .AddRoles<Role>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.ConfigureApplicationCookie(opts => opts.LoginPath = "/Account");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +69,7 @@ namespace Lab_06
             app.UseSession();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(name: null, template: "Home/{search}/Page{page}", defaults: new {controller = "Home", action = "Index"});

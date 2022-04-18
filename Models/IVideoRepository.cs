@@ -8,8 +8,8 @@ namespace Lab_06.Models
         IQueryable<Video> VideosWithUser { get; }
         IQueryable<Video> VideosGetAll { get; }
 
-        Task<Video> CreateVideo(Video video);
-        Task<Video> SaveVideo(Video video);
-        Task DeleteVideo(int videoId);
+        Task<Video> CreateVideoAsync(Video video);
+        Task<Video> SaveVideoAsync(Video video);
+        Task DeleteVideoAsync(int videoId);
     }
 }

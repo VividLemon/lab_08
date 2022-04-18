@@ -14,7 +14,7 @@ namespace Lab_06.Models
         }
         public IQueryable<Order> Orders => _context.Orders.Include(el => el.CartLines).ThenInclude(el => el.Video);
 
-        public async Task SaveOrder(Order order)
+        public async Task SaveOrderAsync(Order order)
         {
             _context.AttachRange(order.CartLines.Select(el => el.Video));
             if (order.OrderId == 0)

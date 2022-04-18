@@ -15,13 +15,38 @@
             </button>
         </form>
         <div>
-            @await Component.InvokeAsync("CartSummary")
-            @if (true)
+            @if(User?.Identity?.IsAuthenticated ?? false)
             {
-                <a class="ms-2" asp-action="index" asp-controller="Admin" aria-label="Admin settings">
-                    <i class="fa-solid fa-gears"></i>
-                </a>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col mt-1">
+                            @await Component.InvokeAsync("CartSummary")
+                        </div>
+                        <div class="col">
+                            <div class="dropdown">
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a asp-action="Create"  asp-controller="Videos" class="dropdown-item">Creator panel</a></li>
+                                <li><a asp-action="Logout" asp-controller="Account" class="dropdown-item">Log out</a></li>
+                                @if ((User?.Identity?.IsAuthenticated ?? false) && (User?.IsInRole("Admin") ?? false))
+                                {
+                                    <a class="dropdown-item" asp-action="index" asp-controller="Admin">
+                                        <i class="fa-solid fa-gears"></i> Admin Settings
+                                    </a>
+                                }
+                              </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
+            else
+            {
+                <a asp-action="Index" asp-controller="Account" class="btn btn-secondary">Log in</a>
+            }
+            
         </div>
     </div>
 </nav>

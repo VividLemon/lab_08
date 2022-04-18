@@ -10,9 +10,6 @@
     <thead>
         <tr>
             <th>
-                Quantity
-            </th>
-            <th>
                 Item
             </th>
             <th>
@@ -29,16 +26,10 @@
         {
             <tr>
                 <td>
-                    @line.Quantity
-                </td>
-                <td>
                     @line.Video.Name
                 </td>
                 <td>
                     @line.Video.Price.ToString("c")
-                </td>
-                <td>
-                    @((line.Quantity * line.Video.Price).ToString("c"))
                 </td>
                 <td>
                     <form asp-action="DeleteCartItem" method="post">

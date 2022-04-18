@@ -32,7 +32,7 @@
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
-                <form method="get" asp-action="Edit">
+                <form method="get" asp-action="Create">
                     <input type="hidden" name="videoId" value="@item.VideoId" />
                     <button type="submit" class="btn btn-primary">
                         Update
@@ -40,11 +40,11 @@
                 </form>
                 <form method="post" asp-action="Destroy" asp-controller="Videos">
                     <input type="hidden" name="videoId" value="@item.VideoId" />
+                    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
                     <button type="submit" class="btn btn-danger">
                         Delete item
                     </button>
                 </form>
-                <a asp-action="Details" asp-route-id="@item.VideoId">Details</a>
             </td>
         </tr>
 }

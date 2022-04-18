@@ -16,9 +16,9 @@ namespace Lab_06.Models
         }
         [JsonIgnore]
         public ISession Session { get; set; }
-        public override void AddCartItem(Video video, int quantity)
+        public override void AddCartItem(Video video)
         {
-            base.AddCartItem(video, quantity);
+            base.AddCartItem(video);
             Session.SetJson("Cart", this);
         }
         public override void RemoveCartItem(Video video)

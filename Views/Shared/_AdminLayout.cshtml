@@ -22,10 +22,15 @@
                 @await Component.InvokeAsync("Navigation")
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+
         @if(TempData["message"] != null)
         {
             <div class="alert alert-success">@TempData["message"]</div>
         }
+            </div>
+        </div>
         <div class="row">
             <div class="col row-cols-2">
                 <div class="card">
@@ -35,11 +40,14 @@
                         </h5>
                         <p class="card-text">
                             <div class="list-group">
-                                <a asp-action="OutstandingOrders" asp-controller="Order" class="list-group-item list-group-item-action" aria-current="true">
+                                @*<a asp-action="OutstandingOrders" asp-controller="Order" class="list-group-item list-group-item-action" aria-current="true">
                                     Outstanding Orders
-                                </a>
+                                </a>*@
                                 <a asp-action="index" asp-controller="videos" class="list-group-item list-group-item-action">
                                     Videos
+                                </a>
+                                <a asp-action="index" asp-controller="comments" class="list-group-item list-group-item-action">
+                                    Comments
                                 </a>
                                 @*<a href="#" class="list-group-item list-group-item-action">A third link item</a>*@
                                 @*<a href="#" class="list-group-item list-group-item-action">A fourth link item</a>*@

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Lab_06.Models;
+using Microsoft.AspNetCore.Http;
+
 namespace Lab_06.Components
 {
     public class CartSummaryViewComponent : ViewComponent

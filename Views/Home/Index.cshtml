@@ -5,7 +5,7 @@
     @foreach(Video item in Model.Videos)
     {   
     <div class="col">
-       @await Html.PartialAsync("Home/Card", item)
+       @await Html.PartialAsync("Home/Card", new VideoPlayCardViewModel {Video = item, IsOwned = Model.OwnedVideos.Contains(item)})
     </div>
     }
 </div>

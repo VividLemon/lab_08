@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lab_06.Models.Comment>
+﻿@model Lab_06.Models.ViewModels.CommentIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -9,29 +9,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Text)
+                Text
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
+                UserId
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
+                Date Posted
             </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Comments) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Text)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
+                @Html.DisplayFor(modelItem => item.User.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
+            <form method="post" asp-action="Destroy" asp-controller="Comments">
+                <input type="hidden" name="commentId" value="@item.CommentId" />
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn btn-danger">
+                    Delete item
+                </button>
+            </form>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<div page-model="@Model.PagingInfo" page-action="Index"></div>
+<a asp-action="Create" class="btn btn-primary">Create new</a>

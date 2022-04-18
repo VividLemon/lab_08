@@ -5,6 +5,6 @@ namespace Lab_06.Models
     public interface IOrderRepository
     {
         IQueryable<Order> Orders { get; }
-        Task SaveOrder(Order order);
+        Task SaveOrderAsync(Order order);
     }
 }

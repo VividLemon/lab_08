@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Lab_06.Data;
 using Lab_06.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lab_06.Controllers
 {
@@ -20,6 +21,7 @@ namespace Lab_06.Controllers
         }
 
         // GET: Users
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Users.ToListAsync());

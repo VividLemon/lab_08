@@ -23,12 +23,12 @@ namespace Lab_06.Controllers
             return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl });
         }
 
-        public async Task<RedirectToActionResult> AddCartItem(int videoId, string returnUrl, int quantity = 1)
+        public async Task<RedirectToActionResult> AddCartItem(int videoId, string returnUrl)
         {
             Video video = await _context.Videos.FirstOrDefaultAsync(el => el.VideoId == videoId); 
             if(video != null)
             {
-                cart.AddCartItem(video, quantity);
+                cart.AddCartItem(video);
             }
             return RedirectToAction("Index", new { returnUrl });
         }

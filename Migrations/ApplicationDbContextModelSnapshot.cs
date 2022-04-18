@@ -27,8 +27,6 @@ namespace Lab_06.Migrations
 
                     b.Property<int?>("OrderId");
 
-                    b.Property<int>("Quantity");
-
                     b.Property<int?>("VideoId");
 
                     b.HasKey("CartLineId");
@@ -48,11 +46,13 @@ namespace Lab_06.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
+                    b.Property<bool>("IsDeleted");
+
                     b.Property<string>("Text");
 
                     b.Property<DateTime>("UpdatedAt");
 
-                    b.Property<int?>("UserId");
+                    b.Property<string>("UserId");
 
                     b.Property<int?>("VideoId");
 
@@ -84,6 +84,31 @@ namespace Lab_06.Migrations
                     b.ToTable("Genres");
                 });
 
+            modelBuilder.Entity("Lab_06.Models.LikedVideo", b =>
+                {
+                    b.Property<int>("LikedVideoId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<bool>("IsLike");
+
+                    b.Property<DateTime>("UpdatedAt");
+
+                    b.Property<string>("UserId");
+
+                    b.Property<int?>("VideoId");
+
+                    b.HasKey("LikedVideoId");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("VideoId");
+
+                    b.ToTable("LikedVideos");
+                });
+
             modelBuilder.Entity("Lab_06.Models.Order", b =>
                 {
                     b.Property<int>("OrderId")
@@ -96,11 +121,6 @@ namespace Lab_06.Migrations
                     b.Property<string>("Country")
                         .IsRequired();
 
-                    b.Property<string>("Email")
-                        .IsRequired();
-
-                    b.Property<bool>("IsShipped");
-
                     b.Property<string>("Line1")
                         .IsRequired();
 
@@ -108,34 +128,103 @@ namespace Lab_06.Migrations
                         .IsRequired();
 
                     b.Property<string>("State")
-                        .IsRequired()
-                        .HasMaxLength(2);
+                        .IsRequired();
+
+                    b.Property<string>("UserId");
 
                     b.Property<string>("Zip")
                         .IsRequired();
 
                     b.HasKey("OrderId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("Lab_06.Models.Role", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256);
+
+                    b.Property<DateTime>("UpdatedAt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles");
                 });
 
             modelBuilder.Entity("Lab_06.Models.User", b =>
                 {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Email")
+                        .HasMaxLength(256);
 
-                    b.Property<string>("Password");
+                    b.Property<bool>("EmailConfirmed");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<DateTime>("UpdatedAt");
 
-                    b.HasKey("UserId");
+                    b.Property<int>("UserId");
 
-                    b.ToTable("Users");
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("Lab_06.Models.Video", b =>
@@ -146,23 +235,28 @@ namespace Lab_06.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
-                    b.Property<string>("EmbedHtml");
+                    b.Property<string>("EmbedHtml")
+                        .IsRequired();
 
-                    b.Property<string>("ImagePath");
+                    b.Property<string>("ImagePath")
+                        .IsRequired();
 
                     b.Property<bool>("IsDeleted");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.Property<string>("Path");
+                    b.Property<string>("Path")
+                        .IsRequired();
 
                     b.Property<decimal>("Price");
 
                     b.Property<DateTime>("UpdatedAt");
 
-                    b.Property<int?>("UserId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("VideoId");
 
@@ -177,7 +271,11 @@ namespace Lab_06.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedAt");
+
                     b.Property<int?>("GenreId");
+
+                    b.Property<DateTime>("UpdatedAt");
 
                     b.Property<int?>("VideoId");
 
@@ -188,6 +286,92 @@ namespace Lab_06.Migrations
                     b.HasIndex("VideoId");
 
                     b.ToTable("VideoGenres");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType");
+
+                    b.Property<string>("ClaimValue");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType");
+
+                    b.Property<string>("ClaimValue");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider");
+
+                    b.Property<string>("ProviderKey");
+
+                    b.Property<string>("ProviderDisplayName");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("RoleId");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("LoginProvider");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens");
                 });
 
             modelBuilder.Entity("Lab_06.Models.CartLine", b =>
@@ -212,6 +396,24 @@ namespace Lab_06.Migrations
                         .HasForeignKey("VideoId");
                 });
 
+            modelBuilder.Entity("Lab_06.Models.LikedVideo", b =>
+                {
+                    b.HasOne("Lab_06.Models.User", "User")
+                        .WithMany("LikedVideos")
+                        .HasForeignKey("UserId");
+
+                    b.HasOne("Lab_06.Models.Video", "Video")
+                        .WithMany("LikedVideo")
+                        .HasForeignKey("VideoId");
+                });
+
+            modelBuilder.Entity("Lab_06.Models.Order", b =>
+                {
+                    b.HasOne("Lab_06.Models.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("Lab_06.Models.Video", b =>
                 {
                     b.HasOne("Lab_06.Models.User", "User")
@@ -228,6 +430,51 @@ namespace Lab_06.Migrations
                     b.HasOne("Lab_06.Models.Video", "Video")
                         .WithMany("VideoGenres")
                         .HasForeignKey("VideoId");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Lab_06.Models.Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Lab_06.Models.User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Lab_06.Models.User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Lab_06.Models.Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Lab_06.Models.User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Lab_06.Models.User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
